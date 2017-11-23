@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { MdKeyboardArrowUp, MdKeyboardArrowDown } from "react-icons/md";
+import "./VoteCounter.css";
 
 class VoteCounter extends Component {
   constructor(props) {
@@ -17,34 +18,23 @@ class VoteCounter extends Component {
   };
 
   render() {
-    const voteCounter = {
-      width: "50px",
-      float: "left"
-    };
+    const { votes } = this.state;
 
-    const buttons = {
-      background: "transparent",
-      border: 0,
-      fontSize: "26px"
-    };
-
-    const redColor = {
-      color: "#c0392b"
-    };
-
-    const blueColor = {
-      color: "#2980b9"
+    const valueStyle = () => {
+      const valueName =
+        votes < 0
+          ? "c-vote-counter-value--negative"
+          : "c-vote-counter-value--positive";
+      return valueName;
     };
 
     return (
-      <div style={voteCounter}>
-        <button style={buttons} onClick={this.IncrementVote}>
+      <div className="c-vote-counter">
+        <button className="c-vote-counter-button" onClick={this.IncrementVote}>
           <MdKeyboardArrowUp />
         </button>
-        <h2 style={this.state.votes < 0 ? redColor : blueColor}>
-          {this.state.votes}
-        </h2>
-        <button style={buttons} onClick={this.DecreaseVote}>
+        <h2 className={valueStyle()}>{votes}</h2>
+        <button className="c-vote-counter-button" onClick={this.DecreaseVote}>
           <MdKeyboardArrowDown />
         </button>
       </div>
