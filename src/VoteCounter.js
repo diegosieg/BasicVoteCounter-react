@@ -17,6 +17,11 @@ class VoteCounter extends Component {
   };
 
   render() {
+    const voteCounter = {
+      width: "50px",
+      float: "left"
+    };
+
     const buttons = {
       background: "transparent",
       border: 0,
@@ -32,7 +37,7 @@ class VoteCounter extends Component {
     };
 
     return (
-      <div>
+      <div style={voteCounter}>
         <button style={buttons} onClick={this.IncrementVote}>
           <MdKeyboardArrowUp />
         </button>
